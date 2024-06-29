@@ -9,7 +9,7 @@
 - Ensure you have Python 3.x installed on your system. The script relies on the following Python libraries:
   - requests: For making HTTP requests to APIs.
   - subprocess: For executing external commands (required by crawling tools).
-  - Additional tools (hakrawler, katana, getJS, gau) should be installed and accessible via the command line.
+  - Additional tools ([hakrawler](https://github.com/hakluke/hakrawler), [katana](https://github.com/projectdiscovery/katana), [getJS](https://github.com/003random/getJS), [gau](https://github.com/lc/gau)) should be installed and accessible via the command line.
 ## Installation
 1. Clone the repository:
 ```
@@ -20,7 +20,7 @@ cd repository
 ```
 pip install -r requirements.txt
 ```
-3. Install additional tools (hakrawler, katana, getJS, gau).
+3. Install additional tools ([hakrawler](https://github.com/hakluke/hakrawler), [katana](https://github.com/projectdiscovery/katana), [getJS](https://github.com/003random/getJS), [gau](https://github.com/lc/gau)).
 
 ## Usage
 1. Prepare a file containing subdomains (one per line), e.g., subdomains.txt.
