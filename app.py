@@ -32,7 +32,7 @@ for domain in domain_names:
     other_urls = get_other_urls(domain)
 
     all_urls =  other_urls  + hist_urls
-    last_urls, _ = remove_unnecessary_urls(all_urls)
+    last_urls = remove_unnecessary_urls(all_urls)
     
     for url in last_urls:
         print(url)
