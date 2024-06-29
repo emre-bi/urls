@@ -24,29 +24,15 @@ if not domain_names:
 
 ##### Urls From Sources #####
 for domain in domain_names:
-    #hist_urls = get_result_urls(domain)
+    hist_urls = get_result_urls(domain)
 
 ##### Urls From Other-Tools #####
     if not (domain.startswith("http://") or domain.startswith("https://")):
         domain = "http://" + domain
     other_urls = get_other_urls(domain)
 
-    all_urls =  other_urls # + hist_urls
-    urls_from_js = []
-    urls1 = []
-    urls2 = []
-    if all_urls is not None:
-        urls1, js_urls = remove_unnecessary_urls(all_urls)
-        for js_url in js_urls:
-            urls_from_js.append(run_linkfinder(js_url))
-    
-    
-    for url_list in urls_from_js:
-        urls2 = url_list + urls2
-    
-    urls = urls1 + urls2
-
-    last_urls, _ = remove_unnecessary_urls(urls)
+    all_urls =  other_urls  + hist_urls
+    last_urls, _ = remove_unnecessary_urls(all_urls)
     
     for url in last_urls:
         print(url)
