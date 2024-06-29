@@ -13,7 +13,7 @@
 ## Installation
 1. Clone the repository:
 ```
-git clone https://github.com/your/repository.git
+git clone https://github.com/emre-bi/urls.git
 cd repository
 ```
 2. Install Python dependencies:
