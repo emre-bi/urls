@@ -153,18 +153,15 @@ def remove_unnecessary_urls(urls):
 
     # Unnecessary Extentions
     unnecessary_extensions = [
-    '.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.ico', '.tiff', '.tif',
+    '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.ico', '.tiff', '.tif',
     '.woff', '.woff2', '.ttf', '.otf', '.eot', '.fon',
     '.pdf', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx', '.csv', '.rtf',
     '.mp3', '.mp4', '.wav', '.avi', '.mov', '.mkv', '.flv', '.wmv', '.mpeg', '.mpg', '.webm'
     ]
     pattern = re.compile(r'\.(' + '|'.join([ext[1:] for ext in unnecessary_extensions]) + r')(\?.*)?$', re.IGNORECASE)    
-    filtered_urls = [url for url in urls if not pattern.search(url)]
-    js_pattern = re.compile(r'\.(' + '|'.join(['js']) + r')(\?.*)?$', re.IGNORECASE)
-    js_urls = [url for url in urls if js_pattern.search(url)]
-       
-    # Dups because multiple parameters, either diffrent paramater or same parameter but diffrent value
+    filtered_urls = [url for url in urls if not pattern.search(url)] 
     
+    # Dups because multiple parameters, either diffrent paramater or same parameter but diffrent value
     path_to_params = {}
 
     for url in filtered_urls:
@@ -188,7 +185,7 @@ def remove_unnecessary_urls(urls):
         merged_url = path + '?' + query_string if query_string else path
         merged_urls.append(merged_url)
 
-    return merged_urls, js_urls
+    return merged_urls
 
 
 ######## Get The Output ########
