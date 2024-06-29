@@ -141,48 +141,13 @@ def run_getJS(subdomain):
         print(f"Error running getJS : {e}")
 
 
-#### Run linkfinder (can be applied to all urls but if find the directories under the current, it doesn't provide full path) ####
-def run_linkfinder(subdomain):
-    try:
-        logger.info(f"Running linkfinder: {subdomain}")
-        subdomain_netloc = urlparse(subdomain).netloc
-
-        command = ['python3', '/home/emre/tools/LinkFinder/linkfinder.py', '-i', subdomain, '-o', 'cli']
-        
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-        
-        if result.stdout:
-            urls = result.stdout.splitlines()
-        else:
-            print(result.stderr)
-            return []
-        
-        url_of_the_domain = []
-        for url in urls:
-            if not (url.startswith("http://") or url.startswith("https://")):
-                url = "http://" + subdomain_netloc + url
-            url_netloc = urlparse(url).netloc
-            
-            if subdomain_netloc in url_netloc:
-                url_of_the_domain.append(url)
-
-        return url_of_the_domain
-    except Exception as e:
-        print(f"Error running linkfinder : {e}")
-
-
 def get_other_urls(domain):
     hakrawler_urls = run_hakrawler(domain)
     katana_urls = run_katana(domain)
-    #gau_urls = run_gau(domain)
+    gau_urls = run_gau(domain)
     getjs_urls = run_getJS(domain)
 
-    all_urls = hakrawler_urls + katana_urls +  getjs_urls # +gau_urls
+    all_urls = hakrawler_urls + katana_urls + getjs_urls + gau_urls
     unique_urls = list(set(all_urls))
 
     return unique_urls
